@@ -1,0 +1,64 @@
+
+     
+<div class="page-header">
+    <h1>آخر الأسئلة</h1>
+</div>
+
+
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+ <h4>
+     <a href="<?php echo $this->url('questions', array('action'=>'add'));?>">أضف سؤال جديد</a>
+ </h4>
+ </p>
+
+ <!--<table class="table">
+ <tr>
+     <th>Question</th>
+     <th>User</th>
+     <th>Views</th>
+     <th>Answers</th>
+     <th>Correct</th>
+     <th>&nbsp;</th>
+ </tr>-->
+ <?php
+  /*<td><?php echo $this->escapeHtml($question->question);?></td>
+     <td><?php echo $this->escapeHtml($question->username);?></td>
+     <td><?php echo $this->escapeHtml($question->views);?></td>
+     <td><?php echo $this->escapeHtml($question->answerscount);?></td>
+     <td><?php echo $this->escapeHtml($question->correct);?></td>*/
+ ?>
+
+
+         
+ <?php foreach ($questions as $question) : ?>
+    <?php
+     $hasRight = '';
+     if($question->correct > 0){
+         $hasRight = 'has-right';
+     }
+     ?>
+ <div class="row" >    
+   
+    <div class="col-sm-4"><h3><a href="questions/view/<?php echo $this->escapeHtml($question->id); ?>"><?php echo $this->escapeHtml($question->title);?></a></h3><div>بواسطة: <h6><a href=""><?php echo $this->escapeHtml($question->username);?></a></h6></div></div>
+       <div class="col-sm-2 <?php echo $hasRight; ?>"><?php echo $this->escapeHtml($question->answerscount);?><div>إجابة</div></div>
+       <div class="col-sm-2"><?php echo $this->escapeHtml($question->views);?><div>مشاهدة</div></div>
+
+</div>
+    <?php
+    /*
+     <td>
+         <a href="<?php echo $this->url('questions',
+             array('action'=>'edit', 'id' => $question->id));?>">Edit</a>
+         <a href="<?php echo $this->url('questions',
+             array('action'=>'delete', 'id' => $question->id));?>">Delete</a>
+     </td>
+ </tr>
+     * 
+     */?>
+ <?php endforeach; ?>
+
+        
+         
+
+ <!--</table>-->
